@@ -1,0 +1,93 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Fizz Buzz App",
+    "version": "1.0.0",
+    "title": "Fizz Buzz",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "premnairr@gmail.com"
+    }
+  },
+  "host": "localhost:4040",
+  "basePath": "/api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "externalDocs": {
+    "description": "Find out more about Swagger"
+  },
+  "paths": {
+    "/fizzbuzz": {
+      "post": {
+        "tags": [
+          "Fizzbuzz"
+        ],
+        "description": "fizzbuzz",
+        "summary": "Check fizzbuzz API",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FizzBuzzBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful array Response with generated fizbuzz",
+            "schema": {
+              "$ref": "#/definitions/FizzBuzzResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FizzBuzzBody": {
+      "title": "Fizzbuzz body",
+      "type": "object",
+      "properties": {
+        "count": {
+          "description": "Fizz Buzz count",
+          "type": "number",
+          "x-example": 100
+        }
+      }
+    },
+    "FizzBuzzResponse": {
+      "title": "FizzBuzz Response",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "x-example":"Success"
+        },
+        "result": {
+          "type": "array",
+          "x-example":[1,2,"Fizz"]
+        }
+      },
+      "required": [
+        "status",
+        "result"
+      ]
+    }
+  }
+}
